@@ -2,7 +2,7 @@
 
 # LSTM Code Summarization
 
-This project implements an LSTM-based sequence-to-sequence model for Java code summarization. The goal is to generate short natural-language summaries for Java methods using a model trained on mined GitHub code.
+This project implements an LSTM-based sequence-to-sequence model for Java code summarization. The model generates short natural-language summaries for Java methods using data mined from GitHub repositories.
 
 ## Data Sources and Preprocessing
 
@@ -46,11 +46,16 @@ The embedding layer is initialized using the pretrained CodeT5 embedding matrix.
 
 Install required Python packages:
 ````
-pip install torch transformers sacrebleu bert-score sentence-transformers pandas numpy
+pip install torch transformers sentencepiece
+pip install sacrebleu bert-score sentence-transformers
+pip install pandas numpy nltk tqdm
 ````
-The notebook is designed to run in a standard Python environment or Google Colab.
-
-## Reproducing Results
+If using NLTK (for METEOR):
+````
+import nltk
+nltk.download("wordnet")
+````
+## Running the Notebook
 
 Run the notebook:
 ````
@@ -65,6 +70,19 @@ The notebook performs the following steps:
 4. validation analysis
 5. final evaluation on the held-out test set
 6. computation of BLEU, METEOR, BERTScore, and SIDE metrics
+
+## Training Notes
+Full training (10 epochs on ~48k samples) was completed prior to submission.
+
+Due to runtime constraints:
+- Full training is not rerun by default
+- CPU training is significantly slower than GPU
+
+Typical performance:
+- GPU (Colab): ~10 minutes per epoch
+- CPU (local): 30–90+ minutes per epoch
+
+Evaluation metrics shown in the notebook are from the completed training run.
 
 ## Outputs
 
