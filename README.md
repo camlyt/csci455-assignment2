@@ -32,6 +32,19 @@ Each line in a code file corresponds to the summary on the same line in the pair
 
 The model uses embeddings generated from the pretrained CodeT5 model (`Salesforce/codet5p-220m`). The provided embedding script generates token IDs and an embedding matrix saved in artifact files used by the LSTM model.
 
+## Precomputed Artifacts
+
+This project relies on precomputed data and embedding artifacts to avoid expensive recomputation.
+
+These include:
+- Processed dataset files (`processed_data/*.txt`)
+- Tokenized and padded tensors (`*.pt` files)
+- CodeT5-derived embedding matrix
+
+These artifacts are generated during earlier stages of the pipeline but are **already included and loaded directly by the notebook**.
+
+> Note: Re-running the full data mining and preprocessing pipeline (e.g., cloning hundreds of GitHub repositories) is not required and may exceed time or storage limits.
+
 ## Model
 
 The model is a sequence-to-sequence LSTM architecture:
