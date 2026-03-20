@@ -43,8 +43,6 @@ These include:
 
 These artifacts are generated during earlier stages of the pipeline but are **already included and loaded directly by the notebook**.
 
-> Note: Re-running the full data mining and preprocessing pipeline (e.g., cloning hundreds of GitHub repositories) is not required and may exceed time or storage limits.
-
 ## Model
 
 The model is a sequence-to-sequence LSTM architecture:
